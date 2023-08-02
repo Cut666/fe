@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Trả sách</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="./asset/css/main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="./asset/js/checktoken.js"></script>
+    </head>
+    <body>
+        <nav class="topnav">
+            <div class="logo">
+                <a href="" class="hidden-sm"><h1>RABBIT</h1></a>
+            </div>
+        </nav>
+        <aside class="sidenav hidden-sm hidden-md" id="nav">
+            <div class="list">
+                <a href="./home.html"><i class="fa fa-home" ></i> Home</a>
+                <div class="list1">
+                    <a href="" style="background-color: #f8f9fa;"><i class="fa fa-users"></i>User</a>
+                    <a href="./addcustomer.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Cá nhân</a>
+                    <a href="./addsupplier.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Doanh nghiệp</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem; padding-top:0px;">
+                    <a href=""  class="parent-link"  style="padding-right: 50%;"><i class="fa fa-edit"></i> Sách</a>
+                    <a href="./tonghoptonkho.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Tổng hợp tồn</a>
+                    <a href="./chitietton.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Chi tiết tồn</a>
+                    <a href="./nhapxuatkho.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Phiếu nhập xuất</a>
+                </div>
+                    <a href="./thuvien.html"><i class="fa fa-wrench"></i>Thư viên</a>
+                <a href="./muabansach.html" ><i class="fas fa-window-maximize"></i>Mua bán</a>
+                <div class="list1" style="margin-top: 1rem;">
+                    <a href="" class="active" style="padding-right: 30%;"><i class="fas fa-window-maximize"></i>Thuê sách</a>
+                    <a href="./thuesach.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i>Thuê sách</a>
+                    <a href="./trasach.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Trả sách</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem;">
+                    <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem;">
+                    <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+                </div>
+            </div>
+          </aside>
+        <main class="content">
+            <div class="grid">
+                <div class="painel">
+                    <div class="painel-header">
+                        <h4 class="painel-title">Thêm phiếu</h4>
+                    </div>
+                    
+                    <div class="painel-body" >
+                        <!-- <form class="inline-form" id="form"> -->
+                            <div class="group" style="margin: 1rem 0rem; display: inline-block;">
+                                <a href="#ex3" rel="modal:open" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;" onclick="rental()">Phiếu trả</a>
+                            </div>
+                            
+                            <div class="group" style="margin: 1rem 1rem; display: inline-block;" id="updateuser">
+                                <label for="">Tỷ lệ phạt:</label>
+                                <input type="number" style="height: 40px;width: 40px;margin: 0px 5px;border-radius: 5px;" name="updateuser">
+                                <a onclick="updateuser()" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;">Save</a>
+                            </div>
+                            <div class="group" style="margin: 1rem 1rem; display: inline-block;" id="updateuserdate">
+                                <label for="">số ngày thuê tối đa:</label>
+                                <input type="number" style="height: 40px;width: 40px;margin: 0px 5px;border-radius: 5px;" name="updateuserdate">
+                                <a onclick="updateuserdate()" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;">Save</a>
+                            </div>
+                            <div class="group" style="margin: 1rem 1rem; display: inline-block;" id="createsell">
+                                <label for="">Mất sách:</label>
+                                <input type="text" style="height: 40px;width: 100px;margin: 0px 5px;border-radius: 5px;" placeholder="Mã phiếu trả" name="createsell">
+                                <a onclick="createsell()" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;">Tạo</a>
+                                <a href="#ex5" rel="modal:open"  id="myLink"  style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;"></a>
+                            </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+            <form action="" id="form-search">
+                <input type="text" style="height: 30px; border-radius: 5px; border-color: rgb(134, 134, 119);border-width: 0.5px; padding-left: 5px;" name="search" id="search" placeholder="Nhập mã phiếu">
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px;" > Tìm kiếm</button>
+            </form>
+
+            <div class="grid">
+                <div class="painel">
+                    <div class="painel-header">
+                        <h4 class="painel-title">Danh sách phiếu trả</h4>
+                    </div>
+                    <div class="painel-body">
+                        <table class="zebra" id="ta">
+                            <tr>
+                                <th>Mã</th>
+                                <th>Ngày trả</th>
+                                <th>Số tiền</th>
+                                <th>Nội dung</th>
+                                <th>Trạng thái</th>
+                                <th>Đối tượng</th>
+                                <th>Actions</th>
+                            </tr>
+                            <tbody id="table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="ex1" class="modal" style="font-size: 20px; font-weight: 500;z-index: 100;">
+                <p>Bạn chắc chắn muốn xóa không?</p>
+                <hr>
+                <div style="margin-left: 70%;">
+                  <button style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px;" onclick="deleteCourse()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Yes</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"onclick="close()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+              </div>
+              <div id="ex2" class="modal" style="font-size: 20px; font-weight: 500;">
+                <p>Bạn chắc chắn muốn sửa không?</p>
+                <hr>
+                <div style="margin-left: 70%;">
+                  <button style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px;"onclick="updateCourse()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"onclick="close1()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+            
+              </div>
+              <div id="ex3" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu trả</p>
+                <div style="text-align: center; font-size:15px" id="dateadd">
+                  <i><label for="" >Ngày:</label>
+                    <input type="date" name="dateadd" ></i>
+                  </div>
+                <div style="text-align:right; font-size:15px" id="codeadd">
+                  <i><label for="" >Mã:</label>
+                    <input type="text" name="codeadd" required></i> 
+                </div>
+                <p>Người thuê:</p>
+                <div style="font-size:15px" id="search-result-add">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhadd" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhadd" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhadd" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhadd" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div>
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="noteadd" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div id="rentaldate">
+                    <label for="" style="font-size:15px">Mã phiếu thuê:</label>
+                    <input type="text" name="searchcoderentaladd" placeholder="Mã" style="margin-top:10px;width:80px;" required>
+                    <label for="" style="font-size:15px; margin-left: 70px;">Ngày thuê:</label>
+                    <input type="date" name="rentaldate" style=""disabled required>
+                  </div>
+                  <div style="font-size:15px" id="numberdateadd">
+                    <label for="" >Ngày trả:</label>
+                    <input type="date" name="returndateadd" style="" required>
+                    <label for="" style="margin-left: 60px;">Số ngày thuê:</label>
+                    <input type="number" name="numberdateadd" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <br>
+                  <div style="font-size:15px" >
+                    <table style="border: 1px solid black;" id="renderspadd">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;width:80px">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;width:100px">số lượng thuê</th>
+                        <th style="border: 1px solid black; text-align: center;width:100px">số lượng trả</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Đơn giá</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Thành tiền</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                    <table id="totaladd">
+                        <tr>
+                            <th style="border: 1px solid black;width: 82%;text-align: right;">Tiền thuê:</th>
+                            <th style="border: 1px solid black;"></th>
+                          </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Số ngày quá hạn:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Tỉ lệ phạt:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Tiền phạt:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;">Tổng</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                    </table>
+                  </div>
+               
+                <div style="margin-left: 70%; margin-top: 20px;">
+                  <button type="button" id="save-btn-add" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:136px; left: 210px;" id="searchadd" > Tìm kiếm</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:228px; left: 210px;" id="rentalfindadd" >Thêm</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:260px; left: 205px;" id="datelateadd" >Tạo</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:288px; left: 677px;" id="addadd" >Cập nhật</button>
+                <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:136px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+            </div>
+            <div id="ex4" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu trả</p>
+                <div style="text-align: center; font-size:15px" id="datefix">
+                  <i><label for="" >Ngày:</label>
+                    <input type="date" name="datefix" ></i>
+                  </div>
+                <div style="text-align:right; font-size:15px" id="codefix">
+                  <i><label for="" >Mã:</label>
+                    <input type="text" name="codefix" required></i> 
+                </div>
+                <p>Người thuê:</p>
+                <div style="font-size:15px" id="search-result-fix">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhfix" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhfix" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhfix" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhfix" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div id="notefix">
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="notefix" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div id="rentaldatefix">
+                    <label for="" style="font-size:15px">Mã phiếu thuê:</label>
+                    <input type="text" name="searchcoderentalfix" placeholder="Mã" style="margin-top:10px;width:80px;"disabled required>
+                    <label for="" style="font-size:15px; margin-left: 70px;">Ngày thuê:</label>
+                    <input type="date" name="rentaldatefix" style=""disabled required>
+                  </div>
+                  <div style="font-size:15px" id="numberdatefix">
+                    <label for="" >Ngày trả:</label>
+                    <input type="date" name="returndatefix" style="" required>
+                    <label for="" style="margin-left: 60px;">Số ngày thuê:</label>
+                    <input type="number" name="numberdatefix" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <br>
+                  <div style="font-size:15px" >
+                    <table style="border: 1px solid black;" id="renderspfix">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;width:80px">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;width:100px">số lượng thuê</th>
+                        <th style="border: 1px solid black; text-align: center;width:100px">số lượng trả</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Đơn giá</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Thành tiền</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                    <table id="totalfix">
+                        <tr>
+                            <th style="border: 1px solid black;width: 82%;text-align: right;">Tiền thuê:</th>
+                            <th style="border: 1px solid black;"></th>
+                          </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Số ngày quá hạn:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Tỉ lệ phạt:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;text-align: right;">Tiền phạt:</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                      <tr>
+                        <th style="border: 1px solid black;width: 82%;">Tổng</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                    </table>
+                  </div>
+               
+                <div style="margin-left: 70%; margin-top: 20px;">
+                  <button type="button" id="save-btn-fix" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#ex2" rel="modal:open"  style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:136px; left: 210px;" id="searchfix" > Tìm kiếm</button>
+                <!-- <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:228px; left: 210px;" id="rentalfindfix" >Thêm</button> -->
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:260px; left: 205px;" id="datelatefix" >Tạo</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:288px; left: 677px;" id="addfix" >Cập nhật</button>
+                <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:136px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+            </div>
+            <div id="ex5" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Bán sách</p>
+                <div style="text-align: center; font-size:15px" id="dateselladd">
+                  <i><label for="" >Ngày bán:</label>
+                    <input type="date" name="dateselladd" ></i>
+                </div>
+                <div style="text-align: center; font-size:15px">
+                    <i><label for="" >Chưa TT:</label>
+                      <input type="radio" name="statusPay" id="chuattselladd" required onchange="onStatusNewChangeselladd()" checked disabled required></i>
+                    <i><label for="" >Tiền mặt:</label>
+                      <input type="radio" name="statusPay" id="tienmatselladd" required onchange="onStatusNewChangeselladd()" disabled required></i>
+                      <i><label for="" >Chuyển khoản:</label>
+                        <input type="radio" name="statusPay" id="chuyenkhoanselladd" required onchange="onStatusNewChangeselladd()" disabled required></i>
+                  </div>
+                  <div style="text-align:right; font-size:15px" id="codeselladd">
+                    <i><label for="" >Mã:</label>
+                      <input type="text" name="codeselladd" required></i> 
+                  </div>
+                <p>Người bán:</p>
+                <div style="font-size:15px" id="search-result-sell-add">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhselladd" style="width: 15%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhselladd" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhselladd" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhselladd" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div>
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="noteselladd" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div>
+                    <label for="" style="font-size:15px">Mã sp:</label>
+                    <input type="text" name="searchcodeselladd" placeholder="Mã" style="margin-top:10px;width:80px;" disabled required>
+                    <label for="" style="font-size:15px; margin-left: 20px;" >Số lượng sp:</label>
+                    <input type="number" name="addnumberselladd" placeholder="Số lượng" style="margin-top:10px;width:80px;" disabled required>
+                    <label for="" style="font-size:15px; margin-left: 20px;" >Giá sp:</label>
+                    <input type="number" name="addpriceselladd" placeholder="Giá" style="margin-top:10px; width:80px;" disabled required>
+                  </div>
+                  <br>
+                  <div style="font-size:15px" >
+                    <table style="border: 1px solid black;" id="renderspsell">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;width:80px">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;width:100px">số lượng</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Đơn giá</th>
+                        <th style="border: 1px solid black; text-align: center;width:131px">Thành tiền</th>
+                        <th style="border: 1px solid black; text-align: center;width:70px">Xóa</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                    <table id="totalselladd">
+                      <tr>
+                        <th style="border: 1px solid black;width: 72.7%;">Tổng</th>
+                        <th style="border: 1px solid black;"></th>
+                      </tr>
+                    </table>
+                  </div>
+               
+                <div style="margin-left: 70%; margin-top: 20px;">
+                  <button type="button" id="save-btn-sell-add" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:160px; left: 210px;" id="searchselladd" > Tìm kiếm</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:255px; left: 530px;" id="addselladd" >Thêm</button>
+                <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:160px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+            </div>
+            <div class="pagination" style="display: flex; justify-content: flex-end;margin-top: -20px;margin-right: 15px;">
+                <button id="prevBtn" disabled>&laquo; Prev</button>
+                <span id="pageInfo"></span>
+                <button id="nextBtn" disabled>Next &raquo;</button>
+            </div>
+        </main>
+        
+       <script src="./asset/js/trasach.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

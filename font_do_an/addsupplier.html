@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Doanh nghiệp</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="./asset/css/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+    />
+    <script src="./asset/js/checktoken.js"></script>
+  </head>
+  <body>
+    <nav class="topnav">
+      <div class="logo">
+          <a href="" class="hidden-sm"><h1>RABBIT</h1></a>
+      </div>
+  </nav>
+    <aside class="sidenav hidden-sm hidden-md" id="nav">
+      <div class="list">
+        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+        <div class="list1">
+          <a href="" class="active" style="padding-right: 53%"
+            ><i class="fa fa-users"></i>User</a
+          >
+          <a
+            href="./addcustomer.html"
+            class="child-link"
+            style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Cá nhân</a
+          >
+          <a href="./addsupplier.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Doanh nghiệp</a
+          >
+        </div>
+        <div class="list1" style="margin-top: 1rem; padding-top: 0px">
+          <a href="" class="parent-link" style="background-color: #f8f9fa"
+            ><i class="fa fa-edit"></i> Sách</a
+          >
+          <a
+            href="./tonghoptonkho.html"
+            class="child-link"
+            style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Tổng hợp
+            tồn</a
+          >
+          <a href="./chitietton.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Chi tiết
+            tồn</a
+          >
+          <a href="./nhapxuatkho.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Phiếu nhập
+            xuất</a
+          >
+        </div>
+        <a href="./thuvien.html"><i class="fa fa-wrench"></i>Thư viên</a>
+        <a href="./muabansach.html" ><i class="fas fa-window-maximize"></i>Mua bán</a>
+        <div class="list1" style="margin-top: 1rem" id="rental">
+          <a href="" style="background-color: #f8f9fa"
+            ><i class="fas fa-window-maximize"></i>Thuê sách</a
+          >
+          <a href="./thuesach.html" class="child-link" style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Thuê sách</a
+          >
+          <a href="./trasach.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Trả sách</a
+          >
+        </div>
+        <div class="list1" style="margin-top: 1rem;">
+          <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+      </div>
+      <div class="list1" style="margin-top: 1rem;">
+          <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+      </div>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="grid">
+        <div class="painel">
+          <div class="painel-header">
+            <h4 class="painel-title">Thêm doanh nghiệp</h4>
+          </div>
+          <div class="painel-body">
+            <form class="inline-form" id="form">
+              <div class="group">
+                <label for="1">Tax code</label>
+                <input
+                  type="number"
+                  name="CCCD"
+                  id=""
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div class="group">
+                <label for="1">Tên</label>
+                <input type="text" name="name" id="" placeholder="" required />
+              </div>
+              <div class="group">
+                <label for="1">Điện thoại</label>
+                <input
+                  type="number"
+                  name="phone"
+                  id=""
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div class="group">
+                <label for="1">Email</label>
+                <input type="text" name="gmail" id="" placeholder="" required />
+              </div>
+              <div class="group">
+                <label for="2">Địa chỉ</label>
+                <input
+                  type="text"
+                  name="address"
+                  id=""
+                  placeholder=""
+                  required
+                />
+              </div>
+              <div class="group">
+                <p>&nbsp;</p>
+                <input
+                  type="submit"
+                  class="btn btn-green search"
+                  style="width: 40%"
+                  value="Thêm"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <form action="" id="form-search">
+        <input
+          type="text"
+          style="
+            height: 30px;
+            border-radius: 5px;
+            border-color: rgb(134, 134, 119);
+            border-width: 0.5px;
+            padding-left: 5px;
+          "
+          name="search"
+          id="search"
+          placeholder="Nhập tax code"
+        />
+        <button
+          type="submit"
+          style="
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            background-color: #00c86f;
+            color: white;
+            padding: 0px 10px;
+            margin-left: 20px;
+          "
+        >
+          Tìm kiếm
+        </button>
+      </form>
+      <div class="grid">
+        <div class="painel">
+          <div class="painel-header">
+            <h4 class="painel-title">Danh sách</h4>
+          </div>
+          <div class="painel-body">
+            <table class="zebra" id="ta">
+              <tr>
+                <th>Tax</th>
+                <th>Họ tên</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Actions</th>
+              </tr>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div
+        id="ex1"
+        class="modal"
+        style="font-size: 20px; font-weight: 500; z-index: 100"
+      >
+        <p>Bạn chắc chắn muốn xóa không?</p>
+        <hr />
+        <div style="margin-left: 70%">
+          <button
+            style="
+              font-size: 15px;
+              background-color: #00c86f;
+              border: none;
+              padding: 5px 10px;
+              border-radius: 5px;
+            "
+            onclick="deleteCourse()"
+          >
+            <a href="#" rel="modal:close" style="color: rgb(255, 255, 255)"
+              >Yes</a
+            >
+          </button>
+          <button
+            style="
+              margin-left: 10%;
+              font-size: 15px;
+              background-color: #bb4c4c;
+              border: none;
+              padding: 5px 10px;
+              border-radius: 5px;
+            "
+            onclick="close()"
+          >
+            <a href="#" rel="modal:close" style="color: rgb(255, 255, 255)"
+              >Close</a
+            >
+          </button>
+        </div>
+      </div>
+      <div id="ex2" class="modal" style="font-size: 20px; font-weight: 500">
+        <p>Bạn chắc chắn muốn sửa không?</p>
+        <hr />
+        <div style="margin-left: 70%">
+          <button
+            style="
+              font-size: 15px;
+              background-color: #00c86f;
+              border: none;
+              padding: 5px 10px;
+              border-radius: 5px;
+            "
+            onclick="updateCourse()"
+          >
+            <a href="#" rel="modal:close" style="color: rgb(255, 255, 255)"
+              >Save</a
+            >
+          </button>
+          <button
+            style="
+              margin-left: 10%;
+              font-size: 15px;
+              background-color: #bb4c4c;
+              border: none;
+              padding: 5px 10px;
+              border-radius: 5px;
+            "
+            onclick="close1()"
+          >
+            <a href="#" rel="modal:close" style="color: rgb(255, 255, 255)"
+              >Close</a
+            >
+          </button>
+        </div>
+      </div>
+      <div
+        class="pagination"
+        style="
+          display: flex;
+          justify-content: flex-end;
+          margin-top: -20px;
+          margin-right: 15px;
+        "
+      >
+        <button id="prevBtn" disabled>&laquo; Prev</button>
+        <span id="pageInfo"></span>
+        <button id="nextBtn" disabled>Next &raquo;</button>
+      </div>
+    </main>
+    <a href="https://techmaster.vn/" target="_blank"id="ads" style="width: 100%;height: 100%;position: absolute;top: 0px; display: none; z-index: 9999">
+      <p style="display: flex;justify-content: center;align-items: center;height: 100%;"><img src="./3.png" alt="" style="width: 40%;"></p>
+    </a>
+  <script src="./asset/js/addsupplier.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

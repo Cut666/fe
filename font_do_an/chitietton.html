@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chi tiết tồn</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="./asset/css/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+    />
+    <script src="./asset/js/checktoken.js"></script>
+  </head>
+  <body>
+    <nav class="topnav">
+        <div class="logo">
+            <a href="" class="hidden-sm"><h1>RABBIT</h1></a>
+        </div>
+    </nav>
+    <aside class="sidenav hidden-sm hidden-md" id="nav">
+      <div class="list">
+        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+        <div class="list1">
+          <a href="" style="padding-right: 53%"
+            ><i class="fa fa-users"></i>User</a
+          >
+          <a
+            href="./addcustomer.html"
+            class="child-link"
+            style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Cá nhân</a
+          >
+          <a href="./addsupplier.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Doanh nghiệp</a
+          >
+        </div>
+        <div class="list1" style="margin-top: 1rem; padding-top: 0px">
+          <a
+            href=""
+            class="active"
+            style="padding-right: 50%"
+            class="parent-link"
+            ><i class="fa fa-edit"></i> Sách</a
+          >
+          <a
+            href="./tonghoptonkho.html"
+            class="child-link"
+            style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Tổng hợp
+            tồn</a
+          >
+          <a href="./chitietton.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Chi tiết
+            tồn</a
+          >
+          <a href="./nhapxuatkho.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i> Phiếu nhập
+            xuất</a
+          >
+        </div>
+        <a href="./thuvien.html"><i class="fa fa-wrench"></i>Thư viên</a>
+        <a href="./muabansach.html" ><i class="fas fa-window-maximize"></i>Mua bán</a>
+        <div class="list1" style="margin-top: 1rem;" id="rental">
+          <a href="" style="background-color: #f8f9fa"
+            ><i class="fas fa-window-maximize"></i>Thuê sách</a
+          >
+          <a href="./thuesach.html" class="child-link" style="margin-top: 1rem"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Thuê sách</a
+          >
+          <a href="./trasach.html" class="child-link"
+            ><i class="fa fa-edit" style="visibility: hidden"></i>Trả sách</a
+          >
+        </div>
+        <div class="list1" style="margin-top: 1rem;">
+          <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+      </div>
+      <div class="list1" style="margin-top: 1rem;">
+          <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+      </div>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="grid">
+        <div class="painel">
+          <div class="painel-header">
+            <h4 class="painel-title">Ngày</h4>
+          </div>
+          <div
+            class="group"
+            style="margin: 1rem 0rem; display: inline-block"
+            id="ta1"
+          >
+            <label for="">Từ:</label>
+            <input type="date" name="startDate" />
+            <label for="" style="margin-left: 1rem">Đến:</label>
+            <input type="date" name="endDate" />
+            <a
+              class="btn btn-green search"
+              style="
+                width: 40%;
+                padding: 1.2rem 2rem;
+                margin-top: 1rem;
+                color: #fff;
+              "
+              onclick="find()"
+              >Lọc</a
+            >
+          </div>
+        </div>
+      </div>
+      <br />
+      <form action="" id="form-search">
+        <input
+          type="text"
+          style="
+            height: 30px;
+            border-radius: 5px;
+            border-color: rgb(134, 134, 119);
+            border-width: 0.5px;
+            padding-left: 5px;
+          "
+          name="search"
+          id="search"
+          placeholder="Nhập mã sản phẩm"
+        />
+        <table id="searchResultsxuatadd" style="position: absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+          <thead>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button
+          type="submit"
+          style="
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            background-color: #00c86f;
+            color: white;
+            padding: 0px 10px;
+            margin-left: 20px;
+          "
+        >
+          Tìm kiếm
+        </button>
+      </form>
+      <br />
+      <div class="grid">
+        <div class="painel">
+          <div class="painel-header">
+            <h4 class="painel-title">Chi tiết tồn</h4>
+          </div>
+          <div class="painel-body">
+            <table class="zebra" id="ta">
+              <tr>
+                <th>Mã sp</th>
+                <th>Ngày nhập</th>
+                <th>Ngày xuất</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đối tượng</th>
+              </tr>
+              <!--  -->
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <a href="https://techmaster.vn/" target="_blank"id="ads" style="width: 100%;height: 100%;position: absolute;top: 0px; display: none; z-index: 9999">
+      <p style="display: flex;justify-content: center;align-items: center;height: 100%;"><img src="./5.png" alt="" style="width: 40%;"></p>
+    </a>
+   <script src="./asset/js/chitietton.js"></script>
+  </body>
+</html>

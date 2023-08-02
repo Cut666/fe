@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="./asset/css/home.css">
+    <script src="./asset/js/checktoken.js"></script>
+</head>
+<body>
+    <nav class="topnav">
+        <div class="logo">
+            <a href="" class="hidden-sm"><h1>RABBIT </h1></a>
+        </div>
+        <div class="user-menu" style="width: 93%;">
+            <form class="hidden-sm">
+            </form>
+            <div>
+                <span id="username"></span>
+                <a href="#" onclick="LogoutMess()"><i class="fa fa-power-off"></i></a>
+            </div>
+        </div>
+    </nav>
+<aside class="sidenav hidden-sm hidden-md" id="nav">
+    <div class="list">
+        <a href="./home.html" class="active"><i class="fa fa-home" ></i> Home</a>
+        <div class="list1">
+            <a href="" style="background-color: #f8f9fa;"><i class="fa fa-users"></i>User</a>
+            <a href="./addcustomer.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Cá nhân</a>
+            <a href="./addsupplier.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Doanh nghiệp</a>
+        </div>
+        <div class="list1" style="margin-top: 1rem; padding-top:0px;">
+            <a href="" class="parent-link" style="background-color: #f8f9fa;"><i class="fa fa-edit"></i> Sách</a>
+            <a href="./tonghoptonkho.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Tổng hợp tồn</a>
+            <a href="./chitietton.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Chi tiết tồn</a>
+            <a href="./nhapxuatkho.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Phiếu nhập xuất</a>
+        </div>
+            <a href="./thuvien.html"><i class="fa fa-wrench"></i>Thư viên</a>
+            <a href="./muabansach.html" ><i class="fas fa-window-maximize"></i>Mua bán</a>
+        <div class="list1" style="margin-top: 1rem;" id="rental">
+            <a href=""style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Thuê sách</a>
+            <a href="./thuesach.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i>Thuê sách</a>
+            <a href="./trasach.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Trả sách</a>
+        </div>
+        <div class="list1" style="margin-top: 1rem;">
+            <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+        </div>
+        <div class="list1" style="margin-top: 1rem;">
+            <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+        </div>
+    </div>
+</aside>
+
+<main class="content">
+    <div class="grid"id="money">
+        <div class="mini-reports bg-orange">
+                <div class="l" >
+                    <span>Tiền mặt</span>
+                </div>
+                <div class="r">
+                    <i class="fas fa-donate c-orange"></i>
+                </div>
+        </div>
+        <div class="mini-reports bg-red">
+                <div class="l" id="wallet">
+                    <span>Tiền tài khoản</span>
+                </div>
+                <div class="r">
+                    <i class="fa fa-user c-red"></i>
+                </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="painel">
+            <div class="painel-header">
+                <h4 class="painel-title">Ngày</h4>
+            </div>
+            <div class="painel-body" >
+                <!-- <form class="inline-form" id="form"> -->
+                    <div class="group" style="margin: 1rem 0rem; display: inline-block;">
+                        <label for="">Từ:</label>
+                        <input type="date" name="startDate">
+                        <label for="" style="margin-left: 1rem;">Đến:</label>
+                        <input type="date"name="endDate" >
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="painel">
+            <div class="painel-header">
+                <h4 class="painel-title">Báo cáo</h4>
+            </div>
+            <div class="painel-body" >
+                <!-- <form class="inline-form" id="form"> -->
+                    <a class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;" onclick="debt()">Tổng hợp công nợ</a>
+                    <div class="group" style="margin: 1rem 2rem; display: inline-block;">
+                       
+                    </div>
+                    <div class="group" style="margin: 1rem 0rem; display: inline-block;">
+                        <a class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;"onclick="sell()">Doanh thu bán sách</a>
+                    </div>
+                    <div class="group" style="margin: 1rem 2rem; display: inline-block;">
+                       
+                    </div>
+                    <div class="group" style="margin: 1rem 0rem; display: inline-block;">
+                        <a class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;"onclick="rerental()">Doanh thu thuê sách</a>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="painel">
+            <div class="painel-header">
+                <h4 class="painel-title" id="header"></h4>
+            </div>
+            <div class="painel-body">
+                <table class="zebra" id="renderDebtHeader">
+                </table>
+                <table class="zebra" id="ta">
+                </table>
+            </div>
+            <div class="painel-body">
+                <table class="zebra" id="end">
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+<a href="https://techmaster.vn/" target="_blank"id="ads" style="width: 100%;height: 100%;position: absolute;top: 0px; display: none;z-index: 9999 ">
+    <p style="display: flex;justify-content: center;align-items: center;height: 100%;"><img src="./1.png" alt="" style="width: 40%;"></p>
+  </a>
+<script src="./asset/js/home.js"></script>
+</body>
+</html>

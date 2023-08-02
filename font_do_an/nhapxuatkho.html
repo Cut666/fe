@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Nhập xuất kho</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="./asset/css/main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="./asset/js/checktoken.js"></script>
+    </head>
+    <body>
+      <nav class="topnav">
+        <div class="logo">
+            <a href="" class="hidden-sm"><h1>RABBIT</h1></a>
+        </div>
+    </nav>
+          <aside class="sidenav hidden-sm hidden-md" id="nav">
+            <div class="list">
+                <a href="./home"><i class="fa fa-home" ></i> Home</a>
+                <div class="list1">
+                    <a href="" style="background-color: #f8f9fa;"><i class="fa fa-users"></i>User</a>
+                    <a href="./addcustomer.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Cá nhân</a>
+                    <a href="./addsupplier.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Doanh nghiệp</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem; padding-top:0px;">
+                    <a href="" class="active" class="parent-link"  style="padding-right: 50%;"><i class="fa fa-edit"></i> Sách</a>
+                    <a href="./tonghoptonkho.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Tổng hợp tồn</a>
+                    <a href="./chitietton.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Chi tiết tồn</a>
+                    <a href="./nhapxuatkho.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Phiếu nhập xuất</a>
+                </div>
+                    <a href="./thuvien.html"><i class="fa fa-wrench"></i>Thư viên</a>
+                <a href="./muabansach.html" ><i class="fas fa-window-maximize"></i>Mua bán</a>
+                <div class="list1" style="margin-top: 1rem;" id="rental">
+                    <a href=""  style="padding-right: 30%;"><i class="fas fa-window-maximize"></i>Thuê sách</a>
+                    <a href="./thuesach.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i>Thuê sách</a>
+                    <a href="./trasach.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Trả sách</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem;">
+                    <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+                </div>
+                <div class="list1" style="margin-top: 1rem;">
+                    <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+                </div>
+            </div>
+          </aside>
+        <main class="content">
+            <div class="grid">
+                <div class="painel">
+                    <div class="painel-header">
+                        <h4 class="painel-title">Thêm phiếu</h4>
+                    </div>
+                    
+                    <div class="painel-body" >
+                        <!-- <form class="inline-form" id="form"> -->
+                            <a href="#ex3" rel="modal:open" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;"onclick="xuatadd()">Phiếu xuất kho</a>
+                            <div class="group" style="margin: 1rem 2rem; display: inline-block;">
+                               
+                            </div>
+                            <div class="group" style="margin: 1rem 0rem; display: inline-block;">
+                                <a href="#ex5" rel="modal:open" class="btn btn-green search" style="width: 40%; padding: 1.2rem 2rem; margin-top: 1rem; color: #fff;"onclick="nhapadd()">Phiếu phập kho</a>
+                            </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+            <form action="" id="form-search">
+                <input type="text" style="height: 30px; border-radius: 5px; border-color: rgb(134, 134, 119);border-width: 0.5px; padding-left: 5px;" name="search" id="search" placeholder="Nhập mã phiếu">
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px;" > Tìm kiếm</button>
+            </form>
+
+            <div class="grid">
+                <div class="painel">
+                    <div class="painel-header">
+                        <h4 class="painel-title">Danh sách nhập xuất</h4>
+                    </div>
+                    <div class="painel-body">
+                        <table class="zebra" id="ta">
+                          <thead>
+                             <tr>
+                                <th>Mã</th>
+                                <th>Ngày nhập</th>
+                                <th>Ngày xuất</th>
+                                <th>Nội dung</th>
+                                <th>Đối tượng</th>
+                                <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table-body"></tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="ex1" class="modal" style="font-size: 20px; font-weight: 500;z-index: 100;">
+                <p>Bạn chắc chắn muốn xóa không?</p>
+                <hr>
+                <div style="margin-left: 70%;">
+                  <button style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px;" onclick="deleteCourse()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Yes</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"onclick="close()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+              </div>
+              <div id="ex2" class="modal" style="font-size: 20px; font-weight: 500;">
+                <p>Bạn chắc chắn muốn sửa không?</p>
+                <hr>
+                <div style="margin-left: 70%;">
+                  <button style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px;"onclick="updateCourse()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"onclick="close1()"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+            
+              </div>
+              <div id="ex3" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu xuất kho</p>
+                <div style="text-align: center; font-size:15px" id="datexuatadd">
+                  <i><label for="" >Ngày xuất:</label>
+                    <input type="date" name="datexuatadd" ></i>
+                </div>
+                <div style="text-align:right; font-size:15px" id="codexuatadd">
+                  <i><label for="" >Mã:</label>
+                    <input type="text" name="codexuatadd" required></i> 
+                </div>
+                <p>Người nhận:</p>
+                <div style="font-size:15px" id="search-result-xuat-add">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhxuatadd" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhaxuatdd" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhxuatadd" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhxuatadd" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div>
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="nodexuatadd" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div>
+                    <label for="" style="font-size:15px">Mã sp:</label>
+                    <input type="text"id="searchInputxuatadd" name="searchcodexuatadd" placeholder="Nhập tên sản phẩm" style="margin-top:10px;" required>
+                    <label for="" style="font-size:15px; margin-left: 20px;" >Số lượng sp:</label>
+                    <input type="number" name="addnumberxuatadd" placeholder="Nhập số lượng sản phẩm" style="margin-top:10px;" required>
+                    <table id="searchResultsxuatadd" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                      <thead>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                    
+                  </div>
+                  <br>
+                  <div style="font-size:15px">
+                    <table style="border: 1px solid black;" id="rendersp">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;">số lượng</th>
+                        <th style="border: 1px solid black; text-align: center;">Xóa</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+               
+                <div style="margin-left: 70%; margin-top: 20px;">
+                  <button type="button" id="save-btn-xuat-add" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 210px;" id="searchxuatadd" > Tìm kiếm</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:230px; left: 530px;" id="addxuatadd" >Thêm</button>
+                <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+              </div>
+            <div id="ex4" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu xuất kho</p>
+                <div style="text-align: center; font-size:15px" id="datexuatfix">
+                  <i><label for="" >Ngày xuất:</label>
+                    <input type="date" name="datexuatfix" ></i>
+                </div>
+                <div style="text-align:right; font-size:15px" id="codexuatfix">
+                  <i><label for="" >Mã:</label>
+                    <input type="text" name="codexuatfix" required></i> 
+                </div>
+                <p>Người nhận:</p>
+                <div style="font-size:15px" id="search-result-xuat-fix">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhxuatfix1" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhaxuatfix" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhxuatfix" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhxuatfix" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div id="search-result-xuat-note-fix">
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="notexuatfix" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div>
+                    <label for="" style="font-size:15px">Mã sp:</label>
+                    <input type="text"id="searchInputxuatfix" name="searchcodexuatfix" placeholder="Nhập tên sản phẩm" style="margin-top:10px;" required>
+                    <label for="" style="font-size:15px; margin-left: 20px;" >Số lượng sp:</label>
+                    <input type="number" name="addnumberxuatfix" placeholder="Nhập số lượng sản phẩm" style="margin-top:10px;" required>
+                    <table id="searchResultsxuatfix" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                      <thead>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                  <br>
+                  <div style="font-size:15px">
+                    <table style="border: 1px solid black;" id="renderspfix">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;">số lượng</th>
+                        <th style="border: 1px solid black; text-align: center;">Xóa</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+               
+                <div style="margin-left: 70%; margin-top: 20px;">
+                  <button type="button" id="save-btn-xuat-fix" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#ex2" rel="modal:open" style="color: rgb(255, 255, 255);">Save</a></button>
+                  <button id="close-btn-xuat-fix" style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+                </div>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 210px;" id="searchxuatfix" > Tìm kiếm</button>
+                <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:230px; left: 530px;" id="addxuatfix" >Thêm</button>
+                <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+            </div>
+            <div id="ex4pdf" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+                <div id="downloadex4">
+                    <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu xuất kho</p>
+                    <div style="text-align: center; font-size:15px" id="datexuatfixpdf">
+                      <i><label for="" >Ngày xuất:</label>
+                        <input type="date" name="datexuatfixpdf" ></i>
+                    </div>
+                    <div style="text-align:right; font-size:15px" id="codexuatfixpdf">
+                      <i><label for="" >Mã:</label>
+                        <input type="text" name="codexuatfixpdf" required></i> 
+                    </div>
+                    <p>Người nhận:</p>
+                    <div style="font-size:15px" id="search-result-xuat-fixpdf">
+                      <div >
+                        <label for="" >CCCD/TAX:</label>
+                        <input type="text" name="cccdkhxuatfix1pdf" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                        <label for="" style="margin-left: 90px;">Tên:</label>
+                        <input type="text" name="namekhaxuatfixpdf" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                      </div>
+                      <div>
+                        <label for="">Địa chỉ:</label>
+                        <input type="text" name="addresskhxuatfixpdf" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                        <label for="" style="margin-left: 10px;">SĐT:</label>
+                        <input type="number" name="phonekhxuatfixpdf" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                      </div>
+                    </div>
+                      <div id="search-result-xuat-note-fixpdf">
+                        <label for="" style="font-size:15px">Nội dung:</label>
+                        <input type="text" name="notexuatfixpdf" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                      </div>
+                      <div>
+                        <table id="searchResultsxuatfixpdf" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                          <thead>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                      <br>
+                      <div style="font-size:15px">
+                        <table style="border: 1px solid black;" id="renderspfixpdf">
+                          <tr style="border: 1px solid black; ">
+                            <th style="border: 1px solid black; text-align: center;width: 30%;">Mã sp</th>
+                            <th style="border: 1px solid black; text-align: center;">Tên</th>
+                            <th style="border: 1px solid black; text-align: center;width: 20%;">số lượng</th>
+                          </tr>
+                          <tr style="border: 1px solid black;">
+                            <td style="border: 1px solid black;" >
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <p>&nbsp;</p>
+                      <div style="display: flex; font-size: 15px;justify-content: space-between;">
+                        <div style="margin-left: 20px;">Chữ ký người nhận</div>
+                        <div style="margin-right: 20px;">Chữ ký người gửi</div>
+                      </div>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                      <p>&nbsp;</p>
+                </div>
+                <button style="background-color:#00C86F; border: none; color: white; padding: 0.3rem 1.5rem; border-radius: 5px;" onclick="convertToPdf('downloadex4')">Download</button>
+             </div>
+            <div id="ex5" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+              <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu nhập kho</p>
+              <div style="text-align: center; font-size:15px" id="datenhapadd">
+                <i><label for="" >Ngày nhập:</label>
+                  <input type="date" name="datenhapadd" ></i>
+              </div>
+              <div style="text-align:right; font-size:15px" id="codenhapadd">
+                <i><label for="" >Mã:</label>
+                  <input type="text" name="codenhapadd" required></i> 
+              </div>
+              <p>Người gửi:</p>
+              <div style="font-size:15px" id="search-result-nhap-add">
+                <div >
+                  <label for="" >CCCD/TAX:</label>
+                  <input type="text" name="cccdkhnhapadd" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                  <label for="" style="margin-left: 90px;">Tên:</label>
+                  <input type="text" name="namekhnhapdd" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                </div>
+                <div>
+                  <label for="">Địa chỉ:</label>
+                  <input type="text" name="addresskhnhapadd" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  <label for="" style="margin-left: 10px;">SĐT:</label>
+                  <input type="number" name="phonekhnhapadd" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                </div>
+              </div>
+                <div>
+                  <label for="" style="font-size:15px">Nội dung:</label>
+                  <input type="text" name="notenhapadd" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                </div>
+                <div>
+                  <label for="" style="font-size:15px">Mã sp:</label>
+                  <input type="text"id="searchInputnhapadd" name="searchcodenhapadd" placeholder="Nhập tên sản phẩm" style="margin-top:10px;" required>
+                  <label for="" style="font-size:15px; margin-left: 20px;" >Số lượng sp:</label>
+                  <input type="number" name="addnumbernhapadd" placeholder="Nhập số lượng sản phẩm" style="margin-top:10px;" required>
+                  <table id="searchResultsnhapadd" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                    <thead>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <br>
+                <div style="font-size:15px">
+                  <table style="border: 1px solid black;" id="renderspnhapadd">
+                    <tr style="border: 1px solid black; ">
+                      <th style="border: 1px solid black; text-align: center;">Mã sp</th>
+                      <th style="border: 1px solid black; text-align: center;">Tên</th>
+                      <th style="border: 1px solid black; text-align: center;">số lượng</th>
+                      <th style="border: 1px solid black; text-align: center;">Xóa</th>
+                    </tr>
+                    <tr style="border: 1px solid black;">
+                      <td style="border: 1px solid black;" >
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+             
+              <div style="margin-left: 70%; margin-top: 20px;">
+                <button type="button" id="save-btn-nhap-add" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Save</a></button>
+                <button style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+              </div>
+              <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 210px;" id="searchnhapadd" > Tìm kiếm</button>
+              <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:235px; left: 530px;" id="addnhapadd" >Thêm</button>
+              <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+            </div>
+          <div id="ex6" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+            <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu nhập kho</p>
+            <div style="text-align: center; font-size:15px" id="datenhapfix">
+              <i><label for="" >Ngày nhập:</label>
+                <input type="date" name="datenhapfix" ></i>
+            </div>
+            <div style="text-align:right; font-size:15px" id="codenhapfix">
+              <i><label for="" >Mã:</label>
+                <input type="text" name="codenhapfix" required></i> 
+            </div>
+            <p>Người gửi:</p>
+            <div style="font-size:15px" id="search-result-nhap-fix">
+              <div >
+                <label for="" >CCCD/TAX:</label>
+                <input type="text" name="cccdkhnhapfix" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                <label for="" style="margin-left: 90px;">Tên:</label>
+                <input type="text" name="namekhnhapfix" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+              </div>
+              <div>
+                <label for="">Địa chỉ:</label>
+                <input type="text" name="addresskhnhapfix" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                <label for="" style="margin-left: 10px;">SĐT:</label>
+                <input type="number" name="phonekhnhapfix" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+              </div>
+            </div>
+              <div id="search-result-nhap-note-fix">
+                <label for="" style="font-size:15px">Nội dung:</label>
+                <input type="text" name="notenhapfix" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+              </div>
+              <div>
+                <label for="" style="font-size:15px">Mã sp:</label>
+                <input type="text" id="searchInputnhapfix" name="searchcodenhapfix" placeholder="Nhập tên sản phẩm" style="margin-top:10px;" required>
+                <label for="" style="font-size:15px; margin-left: 20px;" >Số lượng sp:</label>
+                <input type="number" name="addnumbernhapfix" placeholder="Nhập số lượng sản phẩm" style="margin-top:10px;" required>
+                <table id="searchResultsnhapfix" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                  <thead>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <br>
+              <div style="font-size:15px">
+                <table style="border: 1px solid black;" id="renderspnhapfix">
+                  <tr style="border: 1px solid black; ">
+                    <th style="border: 1px solid black; text-align: center;">Mã sp</th>
+                    <th style="border: 1px solid black; text-align: center;">Tên</th>
+                    <th style="border: 1px solid black; text-align: center;">số lượng</th>
+                    <th style="border: 1px solid black; text-align: center;">Xóa</th>
+                  </tr>
+                  <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;" >
+                    </td>
+                  </tr>
+                </table>
+              </div>
+           
+            <div style="margin-left: 70%; margin-top: 20px;">
+              <button type="button" id="save-btn-nhap-fix" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#ex2" rel="modal:open" style="color: rgb(255, 255, 255);">Save</a></button>
+              <button id="close-btn-nhap-fix" style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+            </div>
+            <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:135px; left: 210px;" id="searchnhapfix" > Tìm kiếm</button>
+            <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:230px; left: 530px;" id="addnhapfix" >Thêm</button>
+            <button type="button" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:137px; left: 700px;"><a href="./addcustomer.html" target="_blank" style="color: rgb(255, 255, 255); font-size: 25px;">+</a></button>
+          </div>
+        <div id="ex6pdf" class="modal" style="font-size: 20px; font-weight: 500; max-width: 800px; vertical-align: initial;">
+            <div id="downloadex6">
+                <p style="text-align: center; font-weight: 700; font-size:25px">Phiếu nhập kho</p>
+                <div style="text-align: center; font-size:15px" id="datenhapfixpdf">
+                  <i><label for="" >Ngày nhập:</label>
+                    <input type="date" name="datenhapfixpdf" ></i>
+                </div>
+                <div style="text-align:right; font-size:15px" id="codenhapfixpdf">
+                  <i><label for="" >Mã:</label>
+                    <input type="text" name="codenhapfixpdf" required></i> 
+                </div>
+                <p>Người gửi:</p>
+                <div style="font-size:15px" id="search-result-nhap-fixpdf">
+                  <div >
+                    <label for="" >CCCD/TAX:</label>
+                    <input type="text" name="cccdkhnhapfixpdf" style="width: 15%; border: none; border-bottom: 1px dotted black;" >
+                    <label for="" style="margin-left: 90px;">Tên:</label>
+                    <input type="text" name="namekhnhapfixpdf" style="width: 50%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                  <div>
+                    <label for="">Địa chỉ:</label>
+                    <input type="text" name="addresskhnhapfixpdf" style="width: 55%; border: none; border-bottom: 1px dotted black;" disabled required>
+                    <label for="" style="margin-left: 10px;">SĐT:</label>
+                    <input type="number" name="phonekhnhapfixpdf" style="width: 20%; border: none; border-bottom: 1px dotted black;" disabled required>
+                  </div>
+                </div>
+                  <div id="search-result-nhap-note-fixpdf">
+                    <label for="" style="font-size:15px">Nội dung:</label>
+                    <input type="text" name="notenhapfixpdf" style="width: 75%; border: none; border-bottom: 1px dotted black;" >
+                  </div>
+                  <div>
+                    
+                    <table id="searchResultsnhapfixpdf" style="position:absolute; overflow: hidden;border-radius: 8px;border-collapse: collapse;width: 410px;height: 200px;overflow-y: auto;overflow-x: auto;background-color:white;display: none;margin-left: 55px;font-size: 15px;">
+                      <thead>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                  <br>
+                  <div style="font-size:15px">
+                    <table style="border: 1px solid black;" id="renderspnhapfixpdf">
+                      <tr style="border: 1px solid black; ">
+                        <th style="border: 1px solid black; text-align: center;width: 30%;">Mã sp</th>
+                        <th style="border: 1px solid black; text-align: center;">Tên</th>
+                        <th style="border: 1px solid black; text-align: center;width: 20%;">số lượng</th>
+                      </tr>
+                      <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;" >
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <p>&nbsp;</p>
+                  <div style="display: flex; font-size: 15px;justify-content: space-between;">
+                    <div style="margin-left: 20px;">Chữ ký người nhận</div>
+                    <div style="margin-right: 20px;">Chữ ký người gửi</div>
+                  </div>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+            </div>
+            <button style="background-color:#00C86F; border: none; color: white; padding: 0.3rem 1.5rem; border-radius: 5px;" onclick="convertToPdf('downloadex6')">Download</button>
+            <!-- <div style="margin-left: 70%; margin-top: 20px;">
+              <button type="button" id="save-btn-nhap-fix" style="font-size: 15px; background-color:#00C86F; border: none;padding: 5px 10px; border-radius: 5px; "><a href="#ex2" rel="modal:open" style="color: rgb(255, 255, 255);">Save</a></button>
+              <button id="close-btn-nhap-fix" style="margin-left: 10%;font-size: 15px; background-color:#bb4c4c;border: none;padding: 5px 10px;border-radius: 5px;"><a href="#" rel="modal:close" style="color: rgb(255, 255, 255);">Close</a></button>
+            </div>
+            <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:135px; left: 210px;" id="searchnhapfix" > Tìm kiếm</button>
+            <button type="submit" style="height: 30px; border-radius: 5px; border:none; background-color: #00C86F;color: white;padding:0px 10px;margin-left: 20px; position: absolute; top:230px; left: 530px;" id="addnhapfix" >Thêm</button> -->
+        </div>
+        <div class="pagination" style="display: flex; justify-content: flex-end;margin-top: -20px;margin-right: 15px;">
+            <button id="prevBtn" disabled>&laquo; Prev</button>
+            <span id="pageInfo"></span>
+            <button id="nextBtn" disabled>Next &raquo;</button>
+        </div>
+        </main>
+        <a href="https://techmaster.vn/" target="_blank"id="ads" style="width: 100%;height: 100%;position: absolute;top: 0px; display: none;z-index: 9999 ">
+          <p style="display: flex;justify-content: center;align-items: center;height: 100%;"><img src="./5.png" alt="" style="width: 40%;"></p>
+        </a>
+<script src="./asset/js/nhapxuatkho.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
+

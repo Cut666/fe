@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RABBIT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="./asset/css/main.css">
+</head>
+<body>
+    <nav class="topnav">
+        <div class="logo">
+            <a href="" class="hidden-sm"><h1>RABBIT</h1></a>
+        </div>
+    </nav>
+    <aside class="sidenav hidden-sm hidden-md" id="nav">
+        <div class="list">
+            <a href="./home.html"><i class="fa fa-home" ></i> Home</a>
+            <div class="list1">
+                <a href="" style="background-color: #f8f9fa;"><i class="fa fa-users"></i>User</a>
+                <a href="./addcustomer.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Khách hàng</a>
+                <a href="./addsupplier.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Nhà cung cấp</a>
+            </div>
+            <div class="list1" style="margin-top: 1rem; padding-top:0px;">
+                <a href="" class="parent-link" style="background-color: #f8f9fa;"><i class="fa fa-edit"></i> Sách</a>
+                <a href="./tonghoptonkho.html" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i> Tổng hợp tồn</a>
+                <a href="./chitietton.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Chi tiết tồn</a>
+                <a href="./nhapxuatkho.html" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i> Phiếu nhập xuất</a>
+            </div>
+                <a href="./thuvien.html" style="margin-top: 0.5rem; padding-top:5px;" class="active"><i class="fa fa-wrench"></i>Thư viên</a>
+            <div class="list1" style="margin-top: -0.5rem;">
+                <a href=""style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Mua bán</a>
+                <a href="product" class="child-link" style="margin-top: 1rem"><i class="fa fa-edit" style="visibility: hidden;"></i>Mua sách</a>
+                <a href="product" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Bán sách</a>
+            </div>
+            <div class="list1" style="margin-top: 1rem;">
+                <a href=""style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Thuê sách</a>
+                <a href="product" class="child-link" style="margin-top: 1rem;"><i class="fa fa-edit" style="visibility: hidden;"></i>Thuê sách</a>
+                <a href="product" class="child-link"><i class="fa fa-edit " style="visibility: hidden;"></i>Trả sách</a>
+            </div>
+            <div class="list1" style="margin-top: 1rem;">
+                <a href="./nganhang.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Ngân hàng</a>
+            </div>
+            <div class="list1" style="margin-top: 1rem;">
+                <a href="./quy.html"style="background-color: #f8f9fa;"><i class="fas fa-window-maximize"></i>Quỹ</a>
+            </div>
+            <a href="registry"><i class="fa fa-cogs"></i> Settings</a>
+        </div>
+    </aside>
+<main class="content">
+    <div class="grid">
+        <div class="painel">
+            <div class="painel-header">
+                <h4 class="painel-title">Cập nhập thông tin thư viện</h4>
+            </div>
+            <div class="painel-body">
+                <form class="inline-form" id="inline-f" style="display: block; margin-left: 40rem;margin-right: 50rem;">
+                    <div class="group">
+                        <label >Mã số thuế:</label>
+                        <input type="number"  name="tax"  placeholder="">
+                    </div>
+                    <div class="group">
+                        <label >Tên thư viện:</label>
+                        <input type="text"  name="name"  placeholder="">
+                    </div>
+                    <div class="group">
+                        <label >Số điện thoại:</label>
+                        <input type="number"  name="phone" placeholder="">
+                    </div>
+                    <div class="group">
+                        <label >Địa Chỉ:</label>
+                        <input type="text"  name="address"  placeholder="">
+                    </div>
+                    <div class="group">
+                        <label >Gmail:</label>
+                        <input type="text" id="5" name="gmail"  placeholder="">
+                    </div>
+                    <div class="group">
+                        <label >Tài khoản:</label>
+                        <input type="gmail" id="5" name="gmail"  placeholder="">
+                    </div>
+                        <p>&nbsp;</p>
+                        <input type="submit" id ="create" class="btn btn-green search" style="width: 25%;" value="Save">
+                </form>
+                <form class="inline-form" id="updaterole" style="display: none; margin-left: 10rem;margin-right: 20rem;">
+                    <p>Chú ý: Chỉ với 100.000đ bạn sẽ được nâng cấp lên tại khoản VIP, với tài khoản VIP bạn sẽ được sử dụng đầy đủ chức năng và không có quảng cáo, chắc chắn bạn sẽ muốn hài lòng khi nâng cấp tài khoản VIP</p>
+                    <a class="btn btn-green search" id="updaterole1">Nâng cấp</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="./asset/js/testaccessfully.js"></script>
+</body>
+</html>
